@@ -2,6 +2,7 @@ import csv
 import config
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import Select
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -20,8 +21,13 @@ Trash_dictionary = {}
 
 def main():
     print("Hello World!")
-    firefox_options = Options()
-    driver = webdriver.Firefox(options=firefox_options)
+    #firefox_options = Options()
+    chrome_options = Options()
+    chrome_options.add_experimental_option("detach", True)
+    #driver = webdriver.Firefox(options=firefox_options)
+    driver = webdriver.Chrome(options=chrome_options) 
+    #driver.maximize_window()
+    driver.set_window_size(1920, 1080)
     driver.get("https://torsed.voskhod.ru/app/#!")
 
     
@@ -78,12 +84,15 @@ def main():
 
         #roleOptions.click()
 
-
+        
+        button_spravochniki = driver.find_element(By.XPATH, "/html/body/div[1]/div/div[2]/div/div/div/div/div[1]/div/div/div[3]/div/span[5]")
         action = ActionChains(driver)
         action.move_to_element(button_spravochniki)
         action.click(button_spravochniki)
         action.perform()
 
+
+        #driver.execute_script("arguments[0].click();", button_spravochniki)
         
 
         #print ("button_spravochniki is ready!")
