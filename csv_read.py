@@ -7,6 +7,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
+from selenium.webdriver.common.action_chains import ActionChains
 
 
 Ur_list = []
@@ -61,9 +62,27 @@ def main():
 
        
         print ("tab_names " + button_spravochniki.text)
+        #print ("tab_names " + button_spravochniki.location_once_scrolled_into_view)
+        #print ("tab_names " + button_spravochniki.location_once_scrolled_into_view)
         
         #button_spravochniki = driver.find_element(By.ID, 'span')
-        button_spravochniki.click()
+        #button_spravochniki.click()
+
+        #parent_page1 = driver.find_element((By.NAME, "Справочники"))  
+
+
+        button_spravochniki = driver.find_element(By.CSS_SELECTOR, "div[tabindex='0']")
+        #button_spravochniki.select_by_visible_text('Справочники')
+        #selectedOption = Select(driver.find_element(By.CSS_SELECTOR, "div[tabindex='0']"))
+        #roleOptions = driver.find_element(By.XPATH, "v-button v-widget cuba-login-submit v-button-cuba-login-submit v-has-width")[0]
+
+        #roleOptions.click()
+
+
+        action = ActionChains(driver)
+        action.move_to_element(button_spravochniki)
+        action.click(button_spravochniki)
+        action.perform()
 
         
 
