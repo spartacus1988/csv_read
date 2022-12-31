@@ -56,8 +56,16 @@ def main():
 
         #button_spravochniki.click()
 
-        button_spravochniki = driver.find_element(By.CSS_SELECTOR, "div[tabindex='0']")
+        button_spravochniki = driver.find_element(By.CSS_SELECTOR, '.cuba-main-menu.v-menubar')
+
+
+       
+        print ("tab_names " + button_spravochniki.text)
+        
+        #button_spravochniki = driver.find_element(By.ID, 'span')
         button_spravochniki.click()
+
+        
 
         #print ("button_spravochniki is ready!")
         #print (button_spravochniki)
