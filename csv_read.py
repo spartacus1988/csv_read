@@ -46,11 +46,30 @@ def main():
         #button_spravochniki = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.XPATH, '//span[@class="v-menubar-submenu-indicator"]'))) #exeption 
         button_spravochniki = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.XPATH, '//*[text()="Справочники"]')))
         button_spravochniki = driver.find_element(By.CSS_SELECTOR, "span[class='v-menubar-menuitem']")
+        #button_spravochniki = driver.find_element(By.XPATH, "//*[contains(@div,'Справочники')]")
+        
         #select = Select(driver.find_element(By.XPATH, '//span[@class="v-menubar-menuitem"]'))
         #select.select_by_visible_text('Справочники')
         print ("Page is ready!")
         #button_spravochniki = driver.find_element(By.XPATH, '//span[@class="v-menubar-menuitem-caption"]')
+
+
+        #button_spravochniki.click()
+
+        button_spravochniki = driver.find_element(By.CSS_SELECTOR, "div[tabindex='0']")
         button_spravochniki.click()
+
+        #print ("button_spravochniki is ready!")
+        #print (button_spravochniki)
+        #print (button_spravochniki.get_property("text_length"))
+        #option = button_spravochniki.get_property('class')
+
+        #for option in button_spravochniki:
+            #print("Value is: %s" % option.get_attribute("value"))
+            #option.click()
+
+
+
         
     except TimeoutException:
         print ("Loading took too much time!")
