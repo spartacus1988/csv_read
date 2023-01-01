@@ -171,11 +171,32 @@ def write_place_of_creating(place_of_creating, driver, delay):
     return
 
 def write_Nerezident(nerezident, driver, delay):
-    if nerezident == 'Нет':
-        print('inside nerezident if')
-        find_and_click_element_by_path(driver, delay, '/html/body/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[3]/div/div/div[2]/div/div/div/div[2]/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[33]/span/label') 
+    if nerezident == 'Да':
+        #print('inside nerezident if')
+        find_and_click_element_by_path(driver, delay, '/html/body/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[3]/div/div/div[2]/div/div/div/div[2]/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[33]/span/input') 
+        #/html/body/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[3]/div/div/div[2]/div/div/div/div[2]/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[33]/span/input
         #chechbox = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[3]/div/div/div[2]/div/div/div/div[2]/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[33]/span/label')))
+    elif nerezident == 'Нет':
+        pass
+    else:
+        pass
+    return
+
+def write_Postavchick(postavchick, driver, delay):
+    if postavchick == 'Нет':
+        #print('inside postavchick if')
+        find_and_click_element_by_path(driver, delay, '/html/body/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[3]/div/div/div[2]/div/div/div/div[2]/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[35]/span/input') 
     elif nerezident == 'Да':
+        pass
+    else:
+        pass
+    return
+
+def write_Pokupatel(pokupatel, driver, delay):
+    if pokupatel == 'Нет':
+        #print('inside postavchick if')
+        find_and_click_element_by_path(driver, delay, '/html/body/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[3]/div/div/div[2]/div/div/div/div[2]/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[37]/span/input') 
+    elif pokupatel == 'Да':
         pass
     else:
         pass
@@ -228,6 +249,10 @@ def read_from_csv_and_write_to_database_Ur(driver, delay, filename='Юридич
             write_Type_Ur(row['Тип организации'],driver, delay) 
             time.sleep(timedelay)
             write_Nerezident(row['Нерезидент'],driver, delay)
+            time.sleep(timedelay)
+            write_Postavchick(row['Поставщик'],driver, delay)
+            time.sleep(timedelay)
+            write_Pokupatel(row['Покупатель'],driver, delay)
             time.sleep(timedelay)
     return
 
