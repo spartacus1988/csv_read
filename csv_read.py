@@ -106,6 +106,24 @@ def write_E_mail_Ur(E_mail_Ur,driver, delay):
     input.send_keys(E_mail_Ur)
     return
 
+def write_site_Ur(site_Ur,driver, delay):
+    find_and_click_element_by_path(driver, delay, '/html/body/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[3]/div/div/div[2]/div/div/div/div[2]/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[16]/div/div/div[3]/div')
+    time.sleep(1)
+    input = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[3]/div/div/div[2]/div/div/div/div[2]/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[16]/div/div/div[1]/div/a')))
+    #/html/body/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[3]/div/div/div[2]/div/div/div/div[2]/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[16]/div/div/div[1]/div/a
+    #/html/body/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[3]/div/div/div[2]/div/div/div/div[2]/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[16]/div/div/div[1]/div/a/span
+    #/html/body/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[3]/div/div/div[2]/div/div/div/div[2]/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[16]/div/div
+    #/html/body/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[3]/div/div/div[2]/div/div/div/div[2]/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[16]/div/div/div[1]/div/a/span
+    #/html/body/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[3]/div/div/div[2]/div/div/div/div[2]/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[16]/div/div
+    #/html/body/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[3]/div/div/div[2]/div/div/div/div[2]/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[16]/div/div/div[1]/div/a
+    #/html/body/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[3]/div/div/div[2]/div/div/div/div[2]/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[15]
+    time.sleep(1)
+    input.send_keys(Keys.RETURN)
+    input.send_keys(site_Ur)
+    input.send_keys(Keys.RETURN)
+
+    return
+
 def write_INN_Ur(INN_Ur,driver, delay):
     input = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[3]/div/div/div[2]/div/div/div/div[2]/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[18]/input')))
     input.send_keys(INN_Ur)
@@ -189,6 +207,8 @@ def read_from_csv_and_write_to_database_Ur(driver, delay, filename='Юридич
             time.sleep(1)
             write_E_mail_Ur(row['E-mail'],driver, delay)
             time.sleep(1)
+            #write_site_Ur(row['Сайт'],driver, delay)
+            #time.sleep(1)
             write_INN_Ur(row['ИНН'],driver, delay)
             time.sleep(1)
             write_KPP_Ur(row['КПП'],driver, delay)
