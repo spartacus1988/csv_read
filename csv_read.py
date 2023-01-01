@@ -12,7 +12,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 import time 
 
-
+timedelay=0.2
 Ur_list = []
 Fiz_list = []
 Trash_list = []
@@ -108,7 +108,7 @@ def write_E_mail_Ur(E_mail_Ur,driver, delay):
 
 def write_site_Ur(site_Ur,driver, delay):
     find_and_click_element_by_path(driver, delay, '/html/body/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[3]/div/div/div[2]/div/div/div/div[2]/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[16]/div/div/div[3]/div')
-    time.sleep(1)
+    time.sleep(timedelay)
     input = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[3]/div/div/div[2]/div/div/div/div[2]/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[16]/div/div/div[1]/div/a')))
     #/html/body/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[3]/div/div/div[2]/div/div/div/div[2]/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[16]/div/div/div[1]/div/a
     #/html/body/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[3]/div/div/div[2]/div/div/div/div[2]/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[16]/div/div/div[1]/div/a/span
@@ -117,7 +117,7 @@ def write_site_Ur(site_Ur,driver, delay):
     #/html/body/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[3]/div/div/div[2]/div/div/div/div[2]/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[16]/div/div
     #/html/body/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[3]/div/div/div[2]/div/div/div/div[2]/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[16]/div/div/div[1]/div/a
     #/html/body/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[3]/div/div/div[2]/div/div/div/div[2]/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[15]
-    time.sleep(1)
+    time.sleep(timedelay)
     input.send_keys(Keys.RETURN)
     input.send_keys(site_Ur)
     input.send_keys(Keys.RETURN)
@@ -172,6 +172,7 @@ def write_place_of_creating(place_of_creating, driver, delay):
 
 def write_Nerezident(nerezident, driver, delay):
     if nerezident == 'Нет':
+        print('inside nerezident if')
         find_and_click_element_by_path(driver, delay, '/html/body/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[3]/div/div/div[2]/div/div/div/div[2]/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[33]/span/label') 
         #chechbox = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[3]/div/div/div[2]/div/div/div/div[2]/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[33]/span/label')))
     elif nerezident == 'Да':
@@ -196,38 +197,38 @@ def read_from_csv_and_write_to_database_Ur(driver, delay, filename='Юридич
             
             
             write_name_Ur(row['Наименование'],driver, delay)
-            time.sleep(1)
+            time.sleep(timedelay)
             write_fullname_Ur(row['Полное наименование'],driver, delay)
-            time.sleep(1)
+            time.sleep(timedelay)
             write_place_of_creating('Тверская область',driver, delay)
-            time.sleep(1)
+            time.sleep(timedelay)
             write_telephone_Ur(row['Телефон'],driver, delay)
-            time.sleep(1)
+            time.sleep(timedelay)
             write_fax_Ur(row['Факс'],driver, delay)
-            time.sleep(1)
+            time.sleep(timedelay)
             write_E_mail_Ur(row['E-mail'],driver, delay)
-            time.sleep(1)
+            time.sleep(timedelay)
             #write_site_Ur(row['Сайт'],driver, delay)
-            #time.sleep(1)
+            #time.sleep(timedelay)
             write_INN_Ur(row['ИНН'],driver, delay)
-            time.sleep(1)
+            time.sleep(timedelay)
             write_KPP_Ur(row['КПП'],driver, delay)
-            time.sleep(1)
+            time.sleep(timedelay)
             write_OGRN_Ur(row['ОГРН'],driver, delay)
-            time.sleep(1)
+            time.sleep(timedelay)
             write_OKOPF_Ur(row['ОКОПФ'],driver, delay)
-            time.sleep(1)
+            time.sleep(timedelay)
 
 
             
             driver.execute_script("window.scrollTo(0, 1080)")
-            time.sleep(3)
+            time.sleep(timedelay)
          
 
             write_Type_Ur(row['Тип организации'],driver, delay) 
-            time.sleep(3)
+            time.sleep(timedelay)
             write_Nerezident(row['Нерезидент'],driver, delay)
-            time.sleep(3)
+            time.sleep(timedelay)
     return
 
 
