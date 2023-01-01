@@ -68,12 +68,12 @@ def main():
      
 
         #button_create_new
-        find_and_click_element_by_path(driver, delay, '/html/body/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[3]/div/div/div[2]/div/div/div/div/div/div/div/div/div[3]/div/div[1]/div/div[1]/div/div[1]/div')
+        #find_and_click_element_by_path(driver, delay, '/html/body/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[3]/div/div/div[2]/div/div/div/div/div/div/div/div/div[3]/div/div[1]/div/div[1]/div/div[1]/div')
        
         #name_input = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[3]/div/div/div[2]/div/div/div/div[2]/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[4]/input')))
         #name_input.send_keys('Наименование')
         
-        read_from_csv_and_write_to_database_Ur(driver, delay, filename='Юридическое лицо.csv')
+        read_from_csv_and_write_to_database_Ur(driver, delay, 'Юридическое лицо_temp.csv')
     
 
 
@@ -183,24 +183,29 @@ def write_Nerezident(nerezident, driver, delay):
     return
 
 def write_Postavchick(postavchick, driver, delay):
-    if postavchick == 'Нет':
+    if postavchick == 'Да':
         #print('inside postavchick if')
         find_and_click_element_by_path(driver, delay, '/html/body/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[3]/div/div/div[2]/div/div/div/div[2]/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[35]/span/input') 
-    elif nerezident == 'Да':
+    elif postavchick == 'Нет':
         pass
     else:
         pass
     return
 
 def write_Pokupatel(pokupatel, driver, delay):
-    if pokupatel == 'Нет':
+    if pokupatel == 'Да':
         #print('inside postavchick if')
         find_and_click_element_by_path(driver, delay, '/html/body/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[3]/div/div/div[2]/div/div/div/div[2]/div/div[1]/div/div[2]/div/div/div/div/div/div/div[2]/div/div/div/div[37]/span/input') 
-    elif pokupatel == 'Да':
+    elif pokupatel == 'Нет':
         pass
     else:
         pass
     return
+
+def press_button_OK(driver, delay):
+    find_and_click_element_by_path(driver, delay, '/html/body/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[3]/div/div/div[2]/div/div/div/div[2]/div/div[3]/div/div/div/div[1]/div/span/span')
+    return
+
 
 def read_from_csv_and_write_to_database_Ur(driver, delay, filename='Юридическое лицо.csv'):
     with open(filename) as f:
@@ -211,6 +216,9 @@ def read_from_csv_and_write_to_database_Ur(driver, delay, filename='Юридич
         i=0
         for row in reader:
             print(row)
+            #button_create_new
+            find_and_click_element_by_path(driver, delay, '/html/body/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[3]/div/div/div[2]/div/div/div/div/div/div/div/div/div[3]/div/div[1]/div/div[1]/div/div[1]/div')
+            time.sleep(timedelay)
             i+=1
             #if i == 1:
                 #continue
@@ -253,6 +261,8 @@ def read_from_csv_and_write_to_database_Ur(driver, delay, filename='Юридич
             write_Postavchick(row['Поставщик'],driver, delay)
             time.sleep(timedelay)
             write_Pokupatel(row['Покупатель'],driver, delay)
+            time.sleep(timedelay)
+            press_button_OK(driver, delay)
             time.sleep(timedelay)
     return
 
