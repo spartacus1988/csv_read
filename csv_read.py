@@ -91,6 +91,25 @@ def main():
         action.click(button_spravochniki)
         action.perform()
 
+        button_Kontragenty = driver.find_element(By.XPATH, "/html/body/div[3]/div[2]/div/div/span[6]/span[1]")
+        action = ActionChains(driver)
+        action.move_to_element(button_Kontragenty)
+        action.click(button_Kontragenty)
+        action.perform()
+                                                                                
+        button_Ur_litca = driver.find_element(By.XPATH, "/html/body/div[3]/div[3]/div/div/span[1]/span[1]")
+        action = ActionChains(driver)
+        action.move_to_element(button_Ur_litca)
+        action.click(button_Ur_litca)
+        action.perform()
+
+
+        button_create_new = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.XPATH, '/html/body/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[3]/div/div/div[2]/div/div/div/div/div/div/div/div/div[3]/div/div[1]/div/div[1]/div/div[1]/div')))
+        action = ActionChains(driver)
+        action.move_to_element(button_create_new)
+        action.click(button_create_new)
+        action.perform()
+
 
         #driver.execute_script("arguments[0].click();", button_spravochniki)
         
