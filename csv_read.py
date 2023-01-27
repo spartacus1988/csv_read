@@ -13,6 +13,7 @@ from selenium.webdriver.common.keys import Keys
 import time 
 import signal
 import stopit
+import pandas as pd
 
 timedelay=0.15
 Ur_list = []
