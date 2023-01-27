@@ -631,9 +631,12 @@ def  read_from_csv_and_write_to_database_Ur(driver, delay, filename='csv_write_U
         #Trash_list = []
         reader = csv.DictReader(f)
         i=0
+        before_failed_list = []
         try:
             for row in reader:
                 print(row)
+                Ur_temp = row['ПолноеНаименование']
+                before_failed_list.append(Ur_temp)
                 #button_create_new
                 find_and_click_element_by_path(driver, delay, '/html/body/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[3]/div/div/div[2]/div/div/div/div/div/div/div/div/div[3]/div/div[1]/div/div[1]/div/div[1]/div')
                 time.sleep(timedelay)
@@ -714,7 +717,11 @@ def  read_from_csv_and_write_to_database_Ur(driver, delay, filename='csv_write_U
                 time.sleep(timedelay)
         except:
             pass
-
+            data = pd.read_csv("csv_write_Ur_utf8.csv", index_col ="ПолноеНаименование" )
+            # dropping passed values
+            data.drop(before_failed_list, inplace = True)
+            data.to_csv('csv_write_Ur_utf8.csv')
+            return
     return
 
 
