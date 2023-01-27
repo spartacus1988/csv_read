@@ -618,9 +618,10 @@ def write_Post_address(address, full_address, driver, delay):
             
             else:               
                 pass
-                if (time.time() - time_before_for)>20:
+                if (time.time() - time_before_for)>8:
                         print("We are waiting for 20 sec")
-                        return
+                        #return
+                        raise Exception
     return
 
 
@@ -650,10 +651,10 @@ def  read_from_csv_and_write_to_database_Ur(driver, delay, filename='csv_write_U
                 time.sleep(timedelay)
                 write_fullname_Ur(row['ПолноеНаименование'],driver, delay)
                 time.sleep(timedelay)
-                try:
-                    write_place_of_creating('Тверская область',driver, delay)
-                except:
-                    continue
+                #try:
+                write_place_of_creating('Тверская область',driver, delay)
+                #except:
+                    #continue
                 time.sleep(timedelay)
                 write_telephone_Ur(row['ЭлементНомерТелефонаБезКодов'],driver, delay)
                 time.sleep(timedelay)
@@ -721,7 +722,7 @@ def  read_from_csv_and_write_to_database_Ur(driver, delay, filename='csv_write_U
             # dropping passed values
             data.drop(before_failed_list, inplace = True)
             data.to_csv('csv_write_Ur_utf8.csv')
-            return
+            raise Exception
     return
 
 
