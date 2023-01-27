@@ -1,4 +1,5 @@
 import csv
+import sys
 import config
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
@@ -622,6 +623,7 @@ def write_Post_address(address, full_address, driver, delay):
                         print("We are waiting for 20 sec")
                         #return
                         raise Exception
+                        #sys.exit()
     return
 
 
@@ -723,6 +725,7 @@ def  read_from_csv_and_write_to_database_Ur(driver, delay, filename='csv_write_U
             data.drop(before_failed_list, inplace = True)
             data.to_csv('csv_write_Ur_utf8.csv')
             raise Exception
+            #sys.exit()
     return
 
 
