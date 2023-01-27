@@ -1,5 +1,6 @@
 import csv
 import sys
+import os
 import config
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
@@ -724,7 +725,10 @@ def  read_from_csv_and_write_to_database_Ur(driver, delay, filename='csv_write_U
             # dropping passed values
             data.drop(before_failed_list, inplace = True)
             data.to_csv('csv_write_Ur_utf8.csv')
-            raise Exception
+            #os.execv("restart.sh","")
+            #os.execv(sys.argv[0], sys.argv)
+            os.execv(sys.executable, ['python'] + [sys.argv[0]])
+            #raise Exception
             #sys.exit()
     return
 
