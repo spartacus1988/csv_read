@@ -17,14 +17,14 @@ import signal
 import stopit
 import pandas as pd
 
-timedelay=0.15
+timedelay=0.2
 Ur_list = []
 Fiz_list = []
 Trash_list = []
 Ur_dictionary = {}
 Fiz_dictionary = {}
 Trash_dictionary = {}
-time606=1
+time606=3
 
 def main():
     print("Hello World!")
@@ -47,6 +47,8 @@ def main():
             
     button_login = driver.find_element(By.XPATH, '//div[@class="v-button v-widget cuba-login-submit v-button-cuba-login-submit v-has-width"]')
     button_login.click()
+
+    #os.execv(sys.executable, ['python3'] + ['/home/mixxxxx/Documents/zakupki_exel/csv_read.py'])
     
     button_spravochniki = WebDriverWait(driver, delay).until(EC.presence_of_element_located((By.XPATH, '//*[text()="Справочники"]')))
     button_spravochniki = driver.find_element(By.CSS_SELECTOR, "span[class='v-menubar-menuitem']")
@@ -620,7 +622,7 @@ def write_Post_address(address, full_address, driver, delay):
             
             else:               
                 pass
-                if (time.time() - time_before_for)>8:
+                if (time.time() - time_before_for)>20:
                         print("We are waiting for 20 sec")
                         #return
                         raise Exception
